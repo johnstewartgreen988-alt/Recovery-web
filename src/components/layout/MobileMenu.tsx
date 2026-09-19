@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { SCAM_TYPES } from "@/data/scamTypes";
 import {
   ABOUT_ITEMS,
@@ -35,7 +34,7 @@ function AccordionGroup({ label, items }: { label: string; items: SimpleNavItem[
       </summary>
       <div className="flex flex-col gap-0.5 pb-3">
         {items.map((item) => (
-          <Link
+          <a
             key={item.title}
             href={item.href}
             className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-sm text-ink-700 hover:bg-mist-100"
@@ -44,7 +43,7 @@ function AccordionGroup({ label, items }: { label: string; items: SimpleNavItem[
               <item.icon />
             </span>
             {item.title}
-          </Link>
+          </a>
         ))}
       </div>
     </details>
@@ -58,6 +57,12 @@ function AccordionGroup({ label, items }: { label: string; items: SimpleNavItem[
  * via Tailwind's peer-checked variant (grid-template-rows 0fr -> 1fr is a
  * pure-CSS trick for animating from/to auto height). This guarantees the
  * menu works even if client JS fails to hydrate on a given device/browser.
+ *
+ * All links here use plain <a> tags (not next/link) on purpose: the
+ * checkbox lives in the root layout, which Next.js keeps mounted across
+ * client-side route changes, so a client-side navigation would leave the
+ * menu checked (visually open) on the new page. A real page load is what
+ * resets it, since the checkbox has no "checked" attribute by default.
  */
 export function MobileMenu() {
   return (
@@ -75,7 +80,7 @@ export function MobileMenu() {
             </summary>
             <div className="flex flex-col gap-0.5 pb-3">
               {SCAM_TYPES.map((scam) => (
-                <Link
+                <a
                   key={scam.slug}
                   href={`/scams/${scam.slug}`}
                   className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-sm text-ink-700 hover:bg-mist-100"
@@ -84,30 +89,30 @@ export function MobileMenu() {
                     <scam.icon className="h-full w-full" />
                   </span>
                   {scam.title}
-                </Link>
+                </a>
               ))}
-              <Link
+              <a
                 href="/how-it-works"
                 className="mt-1 flex items-center gap-1.5 rounded-lg px-2 py-2.5 text-sm font-semibold text-accent-600 hover:bg-mist-100"
               >
                 Explore all specialisations
-              </Link>
+              </a>
             </div>
           </details>
 
-          <Link
+          <a
             href="/group-action"
             className="block border-b border-line-100 py-3 text-base font-semibold text-brand-900"
           >
             Group Action
-          </Link>
+          </a>
 
           <AccordionGroup label="About us" items={ABOUT_ITEMS} />
           <AccordionGroup label="Resources" items={RESOURCES_ITEMS} />
         </nav>
 
         <div className="border-t border-line-100 px-5 py-5">
-          <Button href="/start-your-claim" variant="primary" className="w-full">
+          <Button href="/start-your-claim" variant="primary" className="w-full" forceReload>
             Start your case
           </Button>
         </div>

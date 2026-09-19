@@ -23,6 +23,15 @@ type ButtonProps = {
   icon?: boolean;
   children: ReactNode;
   className?: string;
+  /**
+   * Renders a plain <a> instead of next/link's client-side <Link>, forcing
+   * a full page load on click. Use this for links inside persistent,
+   * layout-level UI (like the mobile menu) whose open/closed state is a
+   * DOM checkbox that survives client-side route changes — a real
+   * navigation is the only thing guaranteed to reset it, and it keeps the
+   * behavior working even if client JS never hydrates.
+   */
+  forceReload?: boolean;
 } & ComponentPropsWithoutRef<ElementType>;
 
 function ArrowIcon() {
@@ -45,6 +54,7 @@ export function Button({
   icon = true,
   children,
   className = "",
+  forceReload = false,
   ...props
 }: ButtonProps) {
   const classes = [
@@ -72,6 +82,14 @@ export function Button({
   );
 
   if (href) {
+    if (forceReload) {
+      return (
+        <a href={href} className={classes} {...props}>
+          {content}
+        </a>
+      );
+    }
+
     return (
       <Link href={href} className={classes} {...props}>
         {content}
