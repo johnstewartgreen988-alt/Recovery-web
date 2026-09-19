@@ -3,11 +3,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { FaqBlock } from "@/components/ui/FaqBlock";
 import { Reveal } from "@/components/ui/Reveal";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Why Choose Regainr | Regainr",
   description: "What makes Regainr different from going it alone.",
-};
+});
 
 const FAQS = [
   {
@@ -103,8 +104,8 @@ const STATS = [
   },
   {
     icon: StarBadgeIcon,
-    value: "Rated 'Excellent' on Trustpilot",
-    body: "4.8 out of 5, based on 1,286 verified reviews from real clients.",
+    value: "Excellent client rating",
+    body: "4.8 out of 5, based on 1,286 client reviews.",
     theme: "bg-accent-500 text-brand-950",
   },
   {

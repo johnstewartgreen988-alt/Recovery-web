@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Contact Us | Regainr",
   description: "Get in touch with the Regainr team.",
-};
+});
 
 function WhatsAppIcon() {
   return (
@@ -36,38 +37,18 @@ function EmailIcon() {
   );
 }
 
-function PhoneIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M6 3h4l2 5-2.5 1.5a12 12 0 006 6L17 13l5 2v4a2 2 0 01-2 2A16 16 0 014 6a2 2 0 012-2z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 const CONTACT_METHODS = [
   {
     icon: WhatsAppIcon,
     title: "WhatsApp",
     detail: "Chat with us instantly",
-    href: "https://wa.me/10000000000",
+    href: "https://wa.me/17633479682",
   },
   {
     icon: EmailIcon,
     title: "Email",
     detail: "hello@regainr.com",
     href: "mailto:hello@regainr.com",
-  },
-  {
-    icon: PhoneIcon,
-    title: "Phone",
-    detail: "+1 (555) 010-0142",
-    href: "tel:+15550100142",
   },
 ];
 

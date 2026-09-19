@@ -4,12 +4,13 @@ import { CaseStudyCard } from "@/components/ui/CaseStudyCard";
 import { FaqBlock } from "@/components/ui/FaqBlock";
 import { Reveal } from "@/components/ui/Reveal";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Success Stories | Regainr",
   description:
     "Real cases where we've helped people recover money lost to scams and fraud.",
-};
+});
 
 const FAQS = [
   {

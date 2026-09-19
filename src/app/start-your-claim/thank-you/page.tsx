@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Thank You | Regainr",
   description: "We've received your eligibility check.",
-};
+  noIndex: true,
+});
 
 function CheckIcon() {
   return (

@@ -106,7 +106,7 @@ export function ChatWidget() {
 
       <div className="hidden w-64 rounded-2xl bg-white p-2 shadow-[0_16px_40px_rgba(11,11,13,0.18)] peer-checked/panel:block">
         <a
-          href="https://wa.me/10000000000"
+          href="https://wa.me/17633479682"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-mist-100"

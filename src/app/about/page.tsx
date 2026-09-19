@@ -3,11 +3,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { FaqBlock } from "@/components/ui/FaqBlock";
 import { Reveal } from "@/components/ui/Reveal";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "About Us | Regainr",
   description: "Who we are and why Regainr exists.",
-};
+});
 
 const FAQS = [
   {

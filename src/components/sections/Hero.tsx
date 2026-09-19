@@ -18,15 +18,15 @@ export function Hero() {
           {/* Left: message panel */}
           <div className="flex flex-col items-center gap-6 rounded-[28px] bg-brand-950 px-6 pt-12 pb-14 text-center sm:px-10 sm:pt-14 lg:items-start lg:px-16 lg:pt-16 lg:pb-16 lg:text-left">
             <div
-              className="animate-hero-in flex items-center gap-2 text-[14px] text-white/90"
+              className="animate-hero-in flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[14px] text-white/90 lg:flex-nowrap lg:justify-start"
               style={{ animationDelay: "0ms" }}
             >
-              <span className="font-semibold text-white">Excellent</span>
-              <span className="text-white/70">4.8 out of 5</span>
+              <span className="whitespace-nowrap font-semibold text-white">Excellent</span>
+              <span className="whitespace-nowrap text-white/70">4.8 out of 5</span>
               <span className="flex items-center gap-0.5 text-accent-400">
                 <StarIcon />
               </span>
-              <span className="text-white/50">Trustpilot</span>
+              <span className="whitespace-nowrap text-white/50">average client rating</span>
             </div>
 
             <h1

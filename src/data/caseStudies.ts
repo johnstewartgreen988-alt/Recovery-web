@@ -44,10 +44,10 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "investment-scam",
     category: "Investment Scam",
-    headline: "$58,100 recovered for an investment scam victim",
+    headline: "$86,500 recovered for an investment scam victim",
     summary:
-      "Elena was invited into a private trading group promising guided crypto signals from a 'senior analyst.' We helped her recover $58,100 of the $76,500 she lost.",
-    image: null,
+      "Elena was invited into a private trading group promising guided crypto signals from a 'senior analyst.' We helped her recover the full $86,500 she lost.",
+    image: "/investment-scam.jpg",
     href: "/resources/success-stories/investment-scam",
     featured: false,
   },

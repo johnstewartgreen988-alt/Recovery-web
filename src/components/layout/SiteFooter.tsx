@@ -39,10 +39,10 @@ const LINK_COLUMNS = [
 ];
 
 const LEGAL_LINKS = [
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms & Conditions", href: "#" },
-  { label: "Cookie Notice", href: "#" },
-  { label: "Complaints", href: "#" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms" },
+  { label: "Cookie Notice", href: "/cookie-notice" },
+  { label: "Complaints", href: "/complaints" },
 ];
 
 export function SiteFooter() {
@@ -65,12 +65,6 @@ export function SiteFooter() {
               people build the strongest possible case to pursue what they
               lost.
             </p>
-            <a
-              href="tel:+15550100142"
-              className="text-sm font-semibold text-white/80 hover:text-white"
-            >
-              +1 (555) 010-0142
-            </a>
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">

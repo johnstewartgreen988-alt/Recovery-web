@@ -8,6 +8,7 @@ export type ScamDetail = {
   protectYourself: string[];
   ifItHappened: string;
   faqs: { question: string; answer: string }[];
+  testimonial: { quote: string; name: string };
 };
 
 export const SCAM_DETAILS: Record<string, ScamDetail> = {
@@ -62,6 +63,11 @@ export const SCAM_DETAILS: Record<string, ScamDetail> = {
           "You're not responsible for being deceived by a convincing scheme, and it doesn't affect whether we can help with your own case.",
       },
     ],
+    testimonial: {
+      quote:
+        "I thought I'd never see a cent of it again once I realized the platform wasn't real. They traced everything and actually got a result.",
+      name: "Daniel R.",
+    },
   },
   "romance-scam": {
     intro:
@@ -114,6 +120,11 @@ export const SCAM_DETAILS: Record<string, ScamDetail> = {
           "That's exactly what an eligibility check is for. Tell us what happened, and we'll give you an honest read on it.",
       },
     ],
+    testimonial: {
+      quote:
+        "I was too embarrassed to tell anyone what had happened. They never once made me feel foolish, they just got to work.",
+      name: "Carla M.",
+    },
   },
   "job-task-scam": {
     intro:
@@ -165,6 +176,11 @@ export const SCAM_DETAILS: Record<string, ScamDetail> = {
           "It depends on how quickly it's reported and the provider's own policies, but it's always worth a free eligibility check.",
       },
     ],
+    testimonial: {
+      quote:
+        "I felt so stupid for falling for it. They reminded me it wasn't my fault, and they actually did something about it.",
+      name: "Kevin T.",
+    },
   },
   "safe-account-scam": {
     intro:
@@ -216,6 +232,11 @@ export const SCAM_DETAILS: Record<string, ScamDetail> = {
           "Sometimes, and it can actually make recovery faster in certain cases. Either way, reporting quickly is what matters most.",
       },
     ],
+    testimonial: {
+      quote:
+        "My bank told me there was nothing they could do. Regainr didn't accept that as the final answer.",
+      name: "Susan H.",
+    },
   },
   "impersonation-scam": {
     intro:
@@ -267,6 +288,11 @@ export const SCAM_DETAILS: Record<string, ScamDetail> = {
           "Our focus is recovery, but reaching out early is still worthwhile, both to get honest guidance and to help prevent a loss before it happens.",
       },
     ],
+    testimonial: {
+      quote:
+        "The call sounded so official that I never once doubted it. They helped me understand exactly what happened and what to do next.",
+      name: "Ahmed F.",
+    },
   },
   "purchase-scam": {
     intro:
@@ -318,5 +344,9 @@ export const SCAM_DETAILS: Record<string, ScamDetail> = {
           "Yes. Larger purchase scams are exactly the kind of case worth a free eligibility check.",
       },
     ],
+    testimonial: {
+      quote: "I'd basically given up on ever seeing that money again. They proved me wrong.",
+      name: "Grace L.",
+    },
   },
 };

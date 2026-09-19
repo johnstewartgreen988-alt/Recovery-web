@@ -1,26 +1,26 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Counter } from "@/components/ui/Counter";
 import { Reveal } from "@/components/ui/Reveal";
 
 const REVIEWS = [
   {
-    name: "Rachel M.",
+    name: "Nora S.",
     timeAgo: "2 weeks ago",
     title: "Thought I'd never see that money again",
     quote:
       "I was skeptical after being scammed once already, but the team was upfront about what to expect from day one. They kept me updated constantly and never overpromised.",
   },
   {
-    name: "James O.",
+    name: "Peter V.",
     timeAgo: "1 month ago",
     title: "Professional, patient, and honest",
     quote:
       "They didn't sugarcoat anything and told me exactly what was realistic. The process took longer than I hoped, but they stuck with it and got results.",
   },
   {
-    name: "Priya K.",
+    name: "Matt B.",
     timeAgo: "3 weeks ago",
     title: "Finally, someone who explained things clearly",
     quote:
@@ -92,8 +92,65 @@ function ArrowIcon({ direction }: { direction: "left" | "right" }) {
   );
 }
 
+function IntroContent({ align }: { align: "center" | "left" }) {
+  const isLeft = align === "left";
+  return (
+    <div className={`flex min-w-0 flex-col items-center gap-8 text-center ${isLeft ? "lg:items-start lg:text-left" : ""}`}>
+      <div>
+        <span className="text-xs font-semibold tracking-wide text-accent-500 uppercase">
+          What our clients say
+        </span>
+        <h2 className="font-display mt-3 text-[26px] leading-[1.3] font-normal tracking-tight text-white sm:text-[30px]">
+          &ldquo;They kept me updated constantly and never overpromised.&rdquo;
+        </h2>
+        <p className="mt-3 text-sm font-semibold text-white/70">
+          &mdash; Nora S., client
+        </p>
+        <p className={`mt-6 max-w-sm text-white/70 ${isLeft ? "mx-auto lg:mx-0" : "mx-auto"}`}>
+          We&apos;ve helped over{" "}
+          <Counter to={2500} suffix=" people" className="font-semibold text-accent-400" />{" "}
+          recover{" "}
+          <Counter to={120} prefix="$" suffix=" million" className="font-semibold text-accent-400" />{" "}
+          in stolen funds.
+        </p>
+      </div>
+
+      <div className={`flex w-fit flex-col items-center gap-2 rounded-2xl bg-white/5 px-5 py-4 ${isLeft ? "lg:items-start" : ""}`}>
+        <span className="text-sm font-semibold text-white">Excellent</span>
+        <StarRow />
+        <span className="text-xs text-white/50">
+          Based on{" "}
+          <span className="underline underline-offset-2">1,286 client reviews</span>
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function ReviewCardBody({ review }: { review: (typeof REVIEWS)[number] }) {
+  return (
+    <>
+      <div className="flex items-center justify-between">
+        <StarRow />
+        <VerifiedBadge />
+      </div>
+      <p className="mt-3 text-sm text-white/50">
+        <span className="font-semibold text-white/80">{review.name}</span>
+        {", "}
+        {review.timeAgo}
+      </p>
+      <p className="font-display mt-3 text-base font-semibold text-white">
+        {review.title}
+      </p>
+      <p className="mt-2 text-sm leading-relaxed text-white/60">{review.quote}</p>
+    </>
+  );
+}
+
 export function ReviewsSection() {
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const mobileStageRef = useRef<HTMLDivElement>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const scroll = (direction: "left" | "right") => {
     const el = scrollerRef.current;
@@ -102,86 +159,95 @@ export function ReviewsSection() {
     el.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" });
   };
 
+  const handleMobileScroll = () => {
+    const el = mobileStageRef.current;
+    if (!el || el.clientWidth === 0) return;
+    setActiveSlide(Math.round(el.scrollLeft / el.clientWidth));
+  };
+
+  const goToSlide = (index: number) => {
+    const el = mobileStageRef.current;
+    if (!el) return;
+    el.scrollTo({ left: index * el.clientWidth, behavior: "smooth" });
+  };
+
   return (
     <section className="bg-mist-50 py-5 sm:py-6 lg:py-8">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-6 lg:px-8">
-        <Reveal className="grid min-w-0 gap-10 rounded-[28px] bg-brand-950 px-6 py-12 sm:px-10 sm:py-14 lg:grid-cols-[1fr_1.3fr] lg:gap-12 lg:px-16 lg:py-16">
-          {/* Left: heading, stat, summary */}
-          <div className="flex min-w-0 flex-col items-center gap-8 text-center lg:items-start lg:text-left">
-            <div>
-              <h2 className="font-display text-[32px] leading-[1.15] font-normal tracking-tight text-white sm:text-[38px]">
-                Rated <span className="text-accent-500">Excellent</span> on{" "}
-                <span className="text-accent-500">Trustpilot</span>.
-              </h2>
-              <p className="mx-auto mt-4 max-w-sm text-white/70 lg:mx-0">
-                We&apos;ve helped over{" "}
-                <Counter to={2500} suffix=" people" className="font-semibold text-accent-400" />{" "}
-                recover{" "}
-                <Counter to={120} prefix="$" suffix=" million" className="font-semibold text-accent-400" />{" "}
-                in stolen funds.
-              </p>
-            </div>
-
-            <div className="flex w-fit flex-col items-center gap-2 rounded-2xl bg-white/5 px-5 py-4 lg:items-start">
-              <span className="text-sm font-semibold text-white">Excellent</span>
-              <StarRow />
-              <span className="text-xs text-white/50">
-                Based on{" "}
-                <span className="underline underline-offset-2">1,286 reviews</span>
-              </span>
-              <span className="text-xs font-semibold text-white/40">
-                Trustpilot
-              </span>
-            </div>
-          </div>
-
-          {/* Right: review cards — desktop only, matching the reference's mobile layout */}
-          <div className="relative hidden min-w-0 lg:block">
+        <Reveal className="min-w-0 overflow-hidden rounded-[28px] bg-brand-950">
+          {/* Mobile: one slide at a time in the same spot — intro card
+              swipes away to reveal each review card in turn, native
+              CSS scroll-snap drives the swipe so it works with no JS;
+              only the dot indicators are JS-enhanced (decorative) */}
+          <div className="lg:hidden">
             <div
-              ref={scrollerRef}
-              className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth"
+              ref={mobileStageRef}
+              onScroll={handleMobileScroll}
+              className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto scroll-smooth"
             >
+              <div className="w-full shrink-0 snap-start px-6 pt-12 pb-8 sm:px-10 sm:pt-14">
+                <IntroContent align="center" />
+              </div>
               {REVIEWS.map((review, i) => (
-                <div
-                  key={i}
-                  className="w-[85%] shrink-0 snap-start rounded-2xl bg-white/5 p-6 transition-colors duration-300 hover:bg-white/10 sm:w-[70%] lg:w-[calc(50%-8px)]"
-                >
-                  <div className="flex items-center justify-between">
-                    <StarRow />
-                    <VerifiedBadge />
-                  </div>
-                  <p className="mt-3 text-sm text-white/50">
-                    <span className="font-semibold text-white/80">{review.name}</span>
-                    {", "}
-                    {review.timeAgo}
-                  </p>
-                  <p className="font-display mt-3 text-base font-semibold text-white">
-                    {review.title}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/60">
-                    {review.quote}
-                  </p>
+                <div key={i} className="w-full shrink-0 snap-start px-6 pt-12 pb-8 sm:px-10 sm:pt-14">
+                  <ReviewCardBody review={review} />
                 </div>
               ))}
             </div>
 
-            <div className="mt-6 flex justify-end gap-2">
-              <button
-                type="button"
-                aria-label="Previous reviews"
-                onClick={() => scroll("left")}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-white/50"
+            <div className="flex justify-center gap-2 pb-10">
+              {REVIEWS.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  aria-label={`Show review ${i + 1}`}
+                  onClick={() => goToSlide(i + 1)}
+                  className={`h-2 w-2 rounded-full transition-colors ${
+                    activeSlide === i + 1 ? "bg-accent-500" : "bg-white/25"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop: unchanged — left column fixed, right column is a
+              multi-card strip with arrow controls */}
+          <div className="hidden min-w-0 gap-12 lg:grid lg:grid-cols-[1fr_1.3fr] lg:px-16 lg:py-16">
+            <IntroContent align="left" />
+
+            <div className="relative min-w-0">
+              <div
+                ref={scrollerRef}
+                className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth"
               >
-                <ArrowIcon direction="left" />
-              </button>
-              <button
-                type="button"
-                aria-label="Next reviews"
-                onClick={() => scroll("right")}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-white/50"
-              >
-                <ArrowIcon direction="right" />
-              </button>
+                {REVIEWS.map((review, i) => (
+                  <div
+                    key={i}
+                    className="w-[calc(50%-8px)] shrink-0 snap-start rounded-2xl bg-white/5 p-6 transition-colors duration-300 hover:bg-white/10"
+                  >
+                    <ReviewCardBody review={review} />
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 flex justify-end gap-2">
+                <button
+                  type="button"
+                  aria-label="Previous reviews"
+                  onClick={() => scroll("left")}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-white/50"
+                >
+                  <ArrowIcon direction="left" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next reviews"
+                  onClick={() => scroll("right")}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-white/50"
+                >
+                  <ArrowIcon direction="right" />
+                </button>
+              </div>
             </div>
           </div>
         </Reveal>

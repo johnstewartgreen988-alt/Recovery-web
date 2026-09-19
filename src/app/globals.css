@@ -33,6 +33,19 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
+/*
+ * Light deterrent against casual image saving (pairs with
+ * ImageProtection.tsx, which blocks right-click/drag via JS). This is a
+ * CSS-only fallback: disables the native drag-ghost and long-press
+ * callout on images specifically, without affecting text selection
+ * anywhere else on the site.
+ */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);

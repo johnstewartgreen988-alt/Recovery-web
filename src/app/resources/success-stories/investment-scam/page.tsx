@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { CaseStatGrid } from "@/components/ui/CaseStatGrid";
@@ -5,6 +6,7 @@ import { CaseStudyCard } from "@/components/ui/CaseStudyCard";
 import { FaqBlock } from "@/components/ui/FaqBlock";
 import { Reveal } from "@/components/ui/Reveal";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import { pageMetadata } from "@/lib/metadata";
 
 const CURRENT_SLUG = "investment-scam";
 const MORE_STORIES = CASE_STUDIES.filter((item) => item.slug !== CURRENT_SLUG);
@@ -20,19 +22,19 @@ const SECTIONS = [
   },
   {
     heading: "When the requests for money started",
-    body: "When Elena tried to withdraw her balance, she was told she needed to upgrade to a 'VIP tier' to unlock larger withdrawals, then pay a tax clearance fee once she had. Each payment was framed as the last one standing between her and her funds. In total, she paid in $76,500.",
+    body: "When Elena tried to withdraw her balance, she was told she needed to upgrade to a 'VIP tier' to unlock larger withdrawals, then pay a tax clearance fee once she had. Each payment was framed as the last one standing between her and her funds. In total, she paid in $86,500.",
   },
   {
     heading: "The outcome",
-    body: "When Elena came to us, our investigation team traced the flow of funds through the platform and built the case needed to escalate the matter with her bank and payment providers. Through that process, we helped recover $58,100 of what she'd lost.",
+    body: "When Elena came to us, our investigation team traced the flow of funds through the platform and built the case needed to escalate the matter with her bank and payment providers. Through that process, we helped her recover the full $86,500 she'd lost.",
   },
 ];
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Investment Scam Recovery — Case Study | Regainr",
   description:
-    "How we helped Elena recover $58,100 lost to a fake crypto signals trading scheme.",
-};
+    "How we helped Elena recover the full $86,500 she lost to a fake crypto signals trading scheme.",
+});
 
 const FAQS = [
   {
@@ -79,26 +81,25 @@ export default function InvestmentScamPage() {
               Investment Scam
             </span>
             <h1 className="font-display mt-4 text-[34px] leading-[1.15] font-normal tracking-tight text-brand-900 sm:text-[44px]">
-              $58,100 recovered for an investment scam victim
+              $86,500 recovered for an investment scam victim
             </h1>
             <p className="mt-4 text-sm text-ink-500">
               Published August 29, 2026 · 2 min read
             </p>
           </Reveal>
 
-          <Reveal
-            delay={100}
-            className="relative aspect-[4/3] overflow-hidden rounded-[28px] bg-gradient-to-br from-brand-800 to-brand-950"
-          />
+          <Reveal delay={100} className="relative aspect-[4/3] overflow-hidden rounded-[28px]">
+            <Image src="/investment-scam.jpg" alt="" fill className="object-cover" />
+          </Reveal>
         </div>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_320px]">
           <Reveal>
             <CaseStatGrid
               stats={[
-                { label: "Amount lost", value: "$76,500" },
-                { label: "Amount recovered", value: "$58,100" },
-                { label: "Duration", value: "5 months" },
+                { label: "Amount lost", value: "$86,500" },
+                { label: "Amount recovered", value: "$86,500" },
+                { label: "Duration", value: "2 months" },
               ]}
             />
 

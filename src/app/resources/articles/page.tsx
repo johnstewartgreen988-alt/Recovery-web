@@ -2,12 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { ARTICLES } from "@/data/articles";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Articles | Regainr",
   description:
     "Insights and guidance to help you recognize scams, protect yourself, and know what to do if it's already happened.",
-};
+});
 
 export default function ArticlesPage() {
   return (

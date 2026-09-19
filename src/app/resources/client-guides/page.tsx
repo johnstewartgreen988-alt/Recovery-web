@@ -2,12 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Client Guide | Regainr",
   description:
     "A detailed, step-by-step guide to what working with Regainr actually looks like, from your first eligibility check through to case resolution.",
-};
+});
 
 const TOC = [
   { id: "before-you-start", label: "Before you start" },

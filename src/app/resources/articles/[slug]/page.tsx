@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { ARTICLES } from "@/data/articles";
+import { pageMetadata } from "@/lib/metadata";
 
 export async function generateStaticParams() {
   return ARTICLES.map((article) => ({ slug: article.slug }));
@@ -19,10 +20,10 @@ export async function generateMetadata({
   const article = ARTICLES.find((item) => item.slug === slug);
   if (!article) return {};
 
-  return {
+  return pageMetadata({
     title: `${article.title} | Regainr`,
     description: article.dek,
-  };
+  });
 }
 
 export default async function ArticlePage({

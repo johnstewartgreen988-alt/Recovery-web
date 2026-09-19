@@ -3,12 +3,13 @@ import Link from "next/link";
 import { SCAM_TYPES } from "@/data/scamTypes";
 import { FaqBlock } from "@/components/ui/FaqBlock";
 import { Reveal } from "@/components/ui/Reveal";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Start Your Case — Check Your Eligibility | Regainr",
   description:
     "Tell us what happened and we'll let you know honestly whether there's a case worth pursuing.",
-};
+});
 
 const FAQS = [
   {

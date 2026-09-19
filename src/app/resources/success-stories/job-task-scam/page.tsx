@@ -6,6 +6,7 @@ import { CaseStudyCard } from "@/components/ui/CaseStudyCard";
 import { FaqBlock } from "@/components/ui/FaqBlock";
 import { Reveal } from "@/components/ui/Reveal";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import { pageMetadata } from "@/lib/metadata";
 
 const CURRENT_SLUG = "job-task-scam";
 const MORE_STORIES = CASE_STUDIES.filter((item) => item.slug !== CURRENT_SLUG);
@@ -29,11 +30,11 @@ const SECTIONS = [
   },
 ];
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Job / Task Scam Recovery — Case Study | Regainr",
   description:
     "How we helped Tyler recover $14,600 lost to a work-from-home job/task scam.",
-};
+});
 
 const FAQS = [
   {

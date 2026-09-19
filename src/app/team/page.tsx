@@ -2,12 +2,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { FaqBlock } from "@/components/ui/FaqBlock";
 import { Reveal } from "@/components/ui/Reveal";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Our Team | Regainr",
   description:
     "Meet the specialists behind Regainr — investigation, appeals, and legal teams working on every case.",
-};
+});
 
 const FAQS = [
   {

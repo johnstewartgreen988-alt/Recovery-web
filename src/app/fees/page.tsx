@@ -2,11 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Our Fees | Regainr",
   description: "What it costs to work with Regainr.",
-};
+});
 
 const FAQS = [
   {
@@ -144,8 +145,8 @@ export default function FeesPage() {
         <Reveal className="mt-20 grid overflow-hidden rounded-[28px] bg-brand-950 lg:grid-cols-2">
           <div className="relative aspect-[4/3] lg:aspect-auto">
             <Image
-              src="/about.jpg"
-              alt="The Regainr team discussing a case together"
+              src="/fees.jpg"
+              alt="The Regainr team reviewing a case together"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"

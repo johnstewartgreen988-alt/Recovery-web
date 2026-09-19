@@ -3,12 +3,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { FaqBlock } from "@/components/ui/FaqBlock";
 import { Reveal } from "@/components/ui/Reveal";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Group Action | Regainr",
   description:
     "When multiple people are targeted by the same scam, pooling cases together can build a stronger, faster path to recovery.",
-};
+});
 
 const FAQS = [
   {

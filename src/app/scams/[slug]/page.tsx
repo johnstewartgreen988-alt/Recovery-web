@@ -7,6 +7,7 @@ import { FaqBlock } from "@/components/ui/FaqBlock";
 import { Reveal } from "@/components/ui/Reveal";
 import { SCAM_TYPES } from "@/data/scamTypes";
 import { SCAM_DETAILS } from "@/data/scamDetails";
+import { pageMetadata } from "@/lib/metadata";
 
 export async function generateStaticParams() {
   return SCAM_TYPES.map((scam) => ({ slug: scam.slug }));
@@ -22,10 +23,10 @@ export async function generateMetadata({
   const detail = SCAM_DETAILS[slug];
   if (!scam || !detail) return {};
 
-  return {
+  return pageMetadata({
     title: `${scam.title} — Warning Signs & How to Protect Yourself | Regainr`,
     description: detail.intro,
-  };
+  });
 }
 
 function WarningIcon() {
@@ -261,6 +262,40 @@ export default async function ScamDetailPage({
             ))}
           </div>
         </div>
+
+        <div className="mt-20 border-t border-line-100 pt-14">
+          <Reveal className="mx-auto max-w-2xl rounded-2xl bg-white p-8 text-center shadow-[0_4px_20px_rgba(11,11,13,0.05)] sm:p-10">
+            <span className="text-xs font-semibold tracking-wide text-accent-600 uppercase">
+              What our clients say
+            </span>
+            <p className="font-display mt-4 text-[22px] leading-[1.4] font-normal tracking-tight text-brand-900 sm:text-[26px]">
+              &ldquo;{detail.testimonial.quote}&rdquo;
+            </p>
+            <p className="mt-4 text-sm font-semibold text-ink-500">
+              &mdash; {detail.testimonial.name}, client
+            </p>
+          </Reveal>
+        </div>
+
+        <Reveal className="mt-14 grid items-center gap-10 rounded-[28px] bg-brand-950 p-8 lg:grid-cols-2 lg:p-14">
+          <div>
+            <p className="font-display text-2xl font-medium text-white">
+              Think this might be what happened to you?
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-white/70">
+              Start with a free eligibility check, we&apos;ll tell you
+              honestly whether there&apos;s a case worth pursuing.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+            <Button href="/how-it-works" variant="ghost">
+              How it works
+            </Button>
+            <Button href="/start-your-claim" variant="primary">
+              Check eligibility
+            </Button>
+          </div>
+        </Reveal>
       </div>
     </div>
   );

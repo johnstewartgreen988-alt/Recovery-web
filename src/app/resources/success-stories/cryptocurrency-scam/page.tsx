@@ -6,6 +6,7 @@ import { CaseStudyCard } from "@/components/ui/CaseStudyCard";
 import { FaqBlock } from "@/components/ui/FaqBlock";
 import { Reveal } from "@/components/ui/Reveal";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import { pageMetadata } from "@/lib/metadata";
 
 const CURRENT_SLUG = "cryptocurrency-scam";
 const MORE_STORIES = CASE_STUDIES.filter((item) => item.slug !== CURRENT_SLUG);
@@ -29,11 +30,11 @@ const SECTIONS = [
   },
 ];
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Cryptocurrency Scam Recovery — Case Study | Regainr",
   description:
     "How we helped Brad recover $418,000 lost to a fake cryptocurrency trading platform.",
-};
+});
 
 const FAQS = [
   {
