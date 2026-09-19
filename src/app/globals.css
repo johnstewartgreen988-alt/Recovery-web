@@ -1,26 +1,122 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Brand — charcoal/near-black (premium, authoritative) */
+  --color-brand-950: #0b0b0d;
+  --color-brand-900: #17171a;
+  --color-brand-800: #212124;
+  --color-brand-700: #2e2e32;
+  --color-brand-600: #3d3d42;
+  --color-brand-500: #55545c;
+
+  /* Accent — logo gold (used sparingly: CTAs, highlights) */
+  --color-accent-400: #ffd72e;
+  --color-accent-500: #ffd009;
+  --color-accent-600: #cca607;
+
+  /* Neutrals — warm cream page background */
+  --color-mist-50: #faf7f2;
+  --color-mist-100: #f2ede4;
+  --color-mist-200: #e8e1d4;
+
+  --color-ink-900: #12161f;
+  --color-ink-700: #3c4453;
+  --color-ink-500: #6b7280;
+
+  --color-line-100: #e6e0d5;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 32s) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-in,
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-in,
+  .animate-fade-up {
+    animation: none;
+  }
+}
+
+/*
+ * Scroll-linked reveal for the chat nudge, driven entirely by CSS
+ * (animation-timeline: scroll) rather than a React scroll listener, so it
+ * doesn't depend on client hydration to work on flaky mobile browsers.
+ * Unsupported browsers just skip the @supports block below and render the
+ * nudge visible immediately (no scroll-gating) — a safe, non-breaking
+ * fallback for a decorative nudge.
+ */
+@keyframes chat-nudge-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .chat-nudge {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: chat-nudge-reveal linear both;
+    animation-timeline: scroll(root);
+    animation-range: 400px 650px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-nudge {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
