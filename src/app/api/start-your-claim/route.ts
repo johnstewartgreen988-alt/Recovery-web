@@ -1,15 +1,29 @@
 import { NextResponse } from "next/server";
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/myezkjyy";
+
 /**
- * Placeholder submission handler: a plain HTML form POST that redirects to
- * a real "thank you" page, so the acknowledgment flow works with zero
- * client-side JavaScript (matches this site's zero-JS-dependency pattern
- * for anything functionally critical). Swap this handler's body for a call
- * to Formspree (or another form backend) once that's wired up — the form's
- * action/method and the redirect-on-success shape stay the same either way.
+ * A plain HTML form POST that forwards to Formspree and redirects to a
+ * real "thank you" page, so the whole flow works with zero client-side
+ * JavaScript (matches this site's zero-JS-dependency pattern for anything
+ * functionally critical).
  */
 export async function POST(request: Request) {
-  await request.formData();
+  const formData = await request.formData();
+  formData.set("_subject", "New eligibility check from Regainr");
+
+  const response = await fetch(FORMSPREE_ENDPOINT, {
+    method: "POST",
+    body: formData,
+    headers: { Accept: "application/json" },
+  });
+
+  if (!response.ok) {
+    return NextResponse.redirect(
+      new URL("/start-your-claim?error=1", request.url),
+      { status: 303 },
+    );
+  }
 
   return NextResponse.redirect(
     new URL("/start-your-claim/thank-you", request.url),

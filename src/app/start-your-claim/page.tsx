@@ -66,7 +66,13 @@ function FieldLabel({ children, htmlFor }: { children: string; htmlFor: string }
 const inputClasses =
   "w-full rounded-xl border border-line-100 bg-mist-50 px-4 py-3 text-sm text-brand-900 placeholder:text-ink-500/60 focus:border-brand-900 focus:bg-white focus:outline-none";
 
-export default function StartYourClaimPage() {
+export default async function StartYourClaimPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const { error } = await searchParams;
+
   return (
     <div className="bg-mist-50">
       <div className="mx-auto max-w-[1440px] px-5 pt-8 pb-20 sm:px-6 lg:px-8 lg:pt-12">
@@ -137,6 +143,13 @@ export default function StartYourClaimPage() {
               It takes about two minutes, and we&apos;ll get back to you
               within one business day.
             </p>
+
+            {error && (
+              <p className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">
+                Something went wrong submitting your details. Please try
+                again, or reach us on WhatsApp or email instead.
+              </p>
+            )}
 
             <div className="mt-6 grid gap-5 sm:grid-cols-2">
               <div>
