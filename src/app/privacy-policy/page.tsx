@@ -29,7 +29,7 @@ const SECTIONS = [
   },
   {
     heading: "Your rights",
-    body: "Depending on where you're located, you may have the right to access, correct, or request deletion of the personal information we hold about you. To exercise any of these rights, contact us at hello@regainr.com.",
+    body: "Depending on where you're located, you may have the right to access, correct, or request deletion of the personal information we hold about you. To exercise any of these rights, contact us at hello@regaineradvisory.com.",
   },
   {
     heading: "Security",
@@ -45,7 +45,7 @@ const SECTIONS = [
   },
   {
     heading: "Contact us",
-    body: "If you have questions about this policy or how your information is handled, contact us at hello@regainr.com.",
+    body: "If you have questions about this policy or how your information is handled, contact us at hello@regaineradvisory.com.",
   },
 ];
 

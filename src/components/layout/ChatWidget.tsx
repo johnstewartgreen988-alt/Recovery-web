@@ -122,7 +122,7 @@ export function ChatWidget() {
           </span>
         </a>
         <a
-          href="mailto:hello@regainr.com"
+          href="mailto:hello@regaineradvisory.com"
           className="flex items-center gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-mist-100"
         >
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-mist-100 text-brand-900">

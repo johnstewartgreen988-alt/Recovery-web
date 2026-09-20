@@ -47,8 +47,8 @@ const CONTACT_METHODS = [
   {
     icon: EmailIcon,
     title: "Email",
-    detail: "hello@regainr.com",
-    href: "mailto:hello@regainr.com",
+    detail: "hello@regaineradvisory.com",
+    href: "mailto:hello@regaineradvisory.com",
   },
 ];
 

@@ -49,7 +49,7 @@ const SECTIONS = [
   },
   {
     heading: "Contact us",
-    body: "Questions about these terms can be sent to hello@regainr.com.",
+    body: "Questions about these terms can be sent to hello@regaineradvisory.com.",
   },
 ];
 

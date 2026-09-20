@@ -13,7 +13,7 @@ const SECTIONS = [
   },
   {
     heading: "How to make a complaint",
-    body: "You can send us a complaint by emailing hello@regainr.com or using our Contact page. Please include your name, any case reference details, and a clear description of the issue.",
+    body: "You can send us a complaint by emailing hello@regaineradvisory.com or using our Contact page. Please include your name, any case reference details, and a clear description of the issue.",
   },
   {
     heading: "What happens next",
@@ -25,7 +25,7 @@ const SECTIONS = [
   },
   {
     heading: "Contact us",
-    body: "Send complaints to hello@regainr.com, and we'll take it from there.",
+    body: "Send complaints to hello@regaineradvisory.com, and we'll take it from there.",
   },
 ];
 
