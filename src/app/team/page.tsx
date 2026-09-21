@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { FaqBlock } from "@/components/ui/FaqBlock";
@@ -34,14 +35,28 @@ const FAQS = [
   },
 ];
 
-const TEAMS = [
+type TeamMember = {
+  name: string;
+  role: string;
+  image?: string;
+};
+
+const TEAMS: { title: string; description: string; members: TeamMember[] }[] = [
   {
     title: "Management Team",
     description:
       "Our management team sets the standard every case is measured against. They oversee our investigation and appeals specialists, making sure you get honest advice, clear communication, and the best possible chance of recovering your money.",
     members: [
-      { name: "Daniel Pierce", role: "Managing Director" },
-      { name: "Sophia Bennett", role: "Head of Operations" },
+      {
+        name: "Daniel Pierce",
+        role: "Managing Director",
+        image: "/managing-director.jpg",
+      },
+      {
+        name: "Sophia Bennett",
+        role: "Head of Operations",
+        image: "/head-of-operation.jpg",
+      },
     ],
   },
   {
@@ -49,21 +64,41 @@ const TEAMS = [
     description:
       "Our experienced fraud investigators guide you through every step of recovering your money. They give you a clear, honest read on your chances of success, and the steady support to see it through.",
     members: [
-      { name: "Stuart Kalinsky", role: "Lead Fraud Investigator" },
-      { name: "Aisha Rahman", role: "Senior Investigator" },
+      {
+        name: "Stuart Kalinsky",
+        role: "Lead Fraud Investigator",
+        image: "/lead-fraud-investigator.jpg",
+      },
+      {
+        name: "Aisha Rahman",
+        role: "Senior Investigator",
+        image: "/senior-investigator.jpg",
+      },
     ],
   },
   {
     title: "Appeals & Escalations Team",
     description:
       "Our appeals team steps in when a bank or platform pushes back, challenging the decision and taking it further. They know exactly how and when to escalate, and won't settle for a first 'no' when there's still a case to be made.",
-    members: [{ name: "Grace Lindqvist", role: "Head of Appeals & Escalations" }],
+    members: [
+      {
+        name: "Grace Lindqvist",
+        role: "Head of Appeals & Escalations",
+        image: "/head-of-appeals-escalations.jpg",
+      },
+    ],
   },
   {
     title: "Legal Team",
     description:
       "Our experienced attorneys bring the legal weight behind every escalation, from formal complaints to regulatory referrals. They build each case on solid legal ground, giving you the strongest possible chance of a fair outcome.",
-    members: [{ name: "Marcus Feldman", role: "Legal Counsel" }],
+    members: [
+      {
+        name: "Marcus Feldman",
+        role: "Legal Counsel",
+        image: "/legal-counsel.jpg",
+      },
+    ],
   },
 ];
 
@@ -73,6 +108,18 @@ function InitialAvatar({ name }: { name: string }) {
       {name.startsWith("[") ? "—" : name.charAt(0)}
     </div>
   );
+}
+
+function MemberAvatar({ name, image }: { name: string; image?: string }) {
+  if (image) {
+    return (
+      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full">
+        <Image src={image} alt={name} fill sizes="56px" className="object-cover" />
+      </div>
+    );
+  }
+
+  return <InitialAvatar name={name} />;
 }
 
 export default function TeamPage() {
@@ -119,7 +166,7 @@ export default function TeamPage() {
                 <div className="mt-6 flex flex-col gap-4">
                   {team.members.map((member, i) => (
                     <div key={i} className="flex items-center gap-3">
-                      <InitialAvatar name={member.name} />
+                      <MemberAvatar name={member.name} image={member.image} />
                       <div>
                         <p className="text-sm font-semibold text-brand-900">
                           {member.name}
