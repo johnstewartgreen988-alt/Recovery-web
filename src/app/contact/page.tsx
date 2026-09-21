@@ -4,6 +4,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/contact",
   title: "Contact Us | Regainr",
   description: "Get in touch with the Regainr team.",
 });

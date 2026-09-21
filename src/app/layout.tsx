@@ -25,10 +25,30 @@ const title = "Regainr — Fraud & Scam Recovery Specialists";
 const description =
   "Regainr helps people who've lost money to scams build the strongest possible case for recovering it, from investigation through to escalation.";
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Regainr",
+  alternateName: "Regainr Advisory",
+  url: SITE_URL,
+  logo: `${SITE_URL}/icon-512.png`,
+  description,
+  email: "hello@regaineradvisory.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "1201 Corporate Drive, Suite 400",
+    addressLocality: "Wilmington",
+    addressRegion: "DE",
+    postalCode: "19801",
+    addressCountry: "US",
+  },
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title,
   description,
+  alternates: { canonical: "/" },
   openGraph: {
     title,
     description,
@@ -55,6 +75,12 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${jakarta.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-mist-50 text-ink-900">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <AnnouncementBar />
         <SiteHeader />
         <main className="flex-1">{children}</main>

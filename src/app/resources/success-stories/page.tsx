@@ -7,6 +7,7 @@ import { CASE_STUDIES } from "@/data/caseStudies";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/resources/success-stories",
   title: "Success Stories | Regainr",
   description:
     "Real cases where we've helped people recover money lost to scams and fraud.",

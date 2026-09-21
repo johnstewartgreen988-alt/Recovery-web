@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/start-your-claim/thank-you",
   title: "Thank You | Regainr",
   description: "We've received your eligibility check.",
   noIndex: true,

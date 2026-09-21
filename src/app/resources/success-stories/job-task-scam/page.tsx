@@ -31,6 +31,7 @@ const SECTIONS = [
 ];
 
 export const metadata = pageMetadata({
+  path: "/resources/success-stories/job-task-scam",
   title: "Job / Task Scam Recovery — Case Study | Regainr",
   description:
     "How we helped Tyler recover $14,600 lost to a work-from-home job/task scam.",

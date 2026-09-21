@@ -2,6 +2,7 @@ import { LegalPageLayout } from "@/components/layout/LegalPageLayout";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/cookie-notice",
   title: "Cookie Notice | Regainr",
   description: "How Regainr uses cookies and local storage on this website.",
 });

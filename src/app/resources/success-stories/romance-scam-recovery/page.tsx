@@ -31,6 +31,7 @@ const SECTIONS = [
 ];
 
 export const metadata = pageMetadata({
+  path: "/resources/success-stories/romance-scam-recovery",
   title: "Romance Scam Recovery — Case Study | Regainr",
   description:
     "How we helped Christine recover $43,000 lost to a romance scam that ran for nearly two years.",

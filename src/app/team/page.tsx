@@ -5,6 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/team",
   title: "Our Team | Regainr",
   description:
     "Meet the specialists behind Regainr — investigation, appeals, and legal teams working on every case.",

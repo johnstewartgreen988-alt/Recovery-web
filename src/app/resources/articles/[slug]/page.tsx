@@ -21,6 +21,7 @@ export async function generateMetadata({
   if (!article) return {};
 
   return pageMetadata({
+    path: `/resources/articles/${slug}`,
     title: `${article.title} | Regainr`,
     description: article.dek,
   });

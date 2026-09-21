@@ -31,6 +31,7 @@ const SECTIONS = [
 ];
 
 export const metadata = pageMetadata({
+  path: "/resources/success-stories/investment-scam",
   title: "Investment Scam Recovery — Case Study | Regainr",
   description:
     "How we helped Elena recover the full $86,500 she lost to a fake crypto signals trading scheme.",

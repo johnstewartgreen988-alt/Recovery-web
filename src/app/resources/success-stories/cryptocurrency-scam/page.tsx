@@ -31,6 +31,7 @@ const SECTIONS = [
 ];
 
 export const metadata = pageMetadata({
+  path: "/resources/success-stories/cryptocurrency-scam",
   title: "Cryptocurrency Scam Recovery — Case Study | Regainr",
   description:
     "How we helped Brad recover $418,000 lost to a fake cryptocurrency trading platform.",

@@ -6,6 +6,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/start-your-claim",
   title: "Start Your Case — Check Your Eligibility | Regainr",
   description:
     "Tell us what happened and we'll let you know honestly whether there's a case worth pursuing.",

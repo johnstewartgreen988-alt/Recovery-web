@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { FaqJsonLd } from "@/components/ui/FaqBlock";
 import { Reveal } from "@/components/ui/Reveal";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/fees",
   title: "Our Fees | Regainr",
   description: "What it costs to work with Regainr.",
 });
@@ -115,6 +117,7 @@ export default function FeesPage() {
         </div>
 
         <div className="mt-20 border-t border-line-100 pt-14">
+          <FaqJsonLd items={FAQS} />
           <Reveal>
             <h2 className="font-display text-[26px] leading-[1.1] font-normal tracking-tight text-brand-900 sm:text-[32px]">
               Fee questions

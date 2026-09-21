@@ -6,6 +6,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/group-action",
   title: "Group Action | Regainr",
   description:
     "When multiple people are targeted by the same scam, pooling cases together can build a stronger, faster path to recovery.",

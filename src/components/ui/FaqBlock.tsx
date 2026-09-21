@@ -18,6 +18,30 @@ function PlusIcon() {
   );
 }
 
+export function FaqJsonLd({ items }: { items: FaqItem[] }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+      }}
+    />
+  );
+}
+
 export function FaqBlock({
   heading = "Frequently asked questions",
   items,
@@ -27,6 +51,7 @@ export function FaqBlock({
 }) {
   return (
     <section className="mt-20 border-t border-line-100 pt-14">
+      <FaqJsonLd items={items} />
       <Reveal>
         <h2 className="font-display text-[26px] leading-[1.1] font-normal tracking-tight text-brand-900 sm:text-[32px]">
           {heading}

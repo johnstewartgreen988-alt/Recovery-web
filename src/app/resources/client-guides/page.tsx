@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { FaqJsonLd } from "@/components/ui/FaqBlock";
 import { Reveal } from "@/components/ui/Reveal";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/resources/client-guides",
   title: "Client Guide | Regainr",
   description:
     "A detailed, step-by-step guide to what working with Regainr actually looks like, from your first eligibility check through to case resolution.",
@@ -290,6 +292,7 @@ export default function ClientGuidePage() {
             </section>
 
             <section id="faqs" className="scroll-mt-24 animate-fade-up">
+              <FaqJsonLd items={FAQS} />
               <h2 className="font-display text-2xl font-medium text-brand-900">
                 Common questions from clients
               </h2>

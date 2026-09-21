@@ -8,16 +8,20 @@ import type { Metadata } from "next";
 export function pageMetadata({
   title,
   description,
+  path,
   noIndex = false,
 }: {
   title: string;
   description: string;
+  /** This page's path (e.g. "/fees"), used to set its canonical URL. */
+  path: string;
   /** Set for pages that shouldn't appear in search results (e.g. thank-you pages). */
   noIndex?: boolean;
 }): Metadata {
   return {
     title,
     description,
+    alternates: { canonical: path },
     openGraph: { title, description },
     twitter: { title, description },
     ...(noIndex && { robots: { index: false, follow: false } }),

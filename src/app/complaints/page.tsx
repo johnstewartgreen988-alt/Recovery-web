@@ -2,6 +2,7 @@ import { LegalPageLayout } from "@/components/layout/LegalPageLayout";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/complaints",
   title: "Complaints | Regainr",
   description: "How to raise a complaint with Regainr and what happens next.",
 });

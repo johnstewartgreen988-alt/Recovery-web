@@ -7,6 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/how-it-works",
   title: "How It Works | Regainr",
   description:
     "How we handle your case, from the first eligibility check through to escalation and recovery.",

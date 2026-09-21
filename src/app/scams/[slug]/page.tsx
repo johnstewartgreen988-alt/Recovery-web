@@ -24,6 +24,7 @@ export async function generateMetadata({
   if (!scam || !detail) return {};
 
   return pageMetadata({
+    path: `/scams/${slug}`,
     title: `${scam.title} — Warning Signs & How to Protect Yourself | Regainr`,
     description: detail.intro,
   });

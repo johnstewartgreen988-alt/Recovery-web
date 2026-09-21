@@ -2,6 +2,7 @@ import { LegalPageLayout } from "@/components/layout/LegalPageLayout";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/terms",
   title: "Terms & Conditions | Regainr",
   description: "The terms that govern your use of the Regainr website and our recovery services.",
 });

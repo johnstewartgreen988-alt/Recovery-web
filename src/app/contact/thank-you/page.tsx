@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/contact/thank-you",
   title: "Thank You | Regainr",
   description: "We've received your message.",
   noIndex: true,

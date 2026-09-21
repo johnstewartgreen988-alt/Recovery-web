@@ -6,6 +6,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
+  path: "/why-choose-regainr",
   title: "Why Choose Regainr | Regainr",
   description: "What makes Regainr different from going it alone.",
 });
