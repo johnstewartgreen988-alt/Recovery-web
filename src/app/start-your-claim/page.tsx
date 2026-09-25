@@ -39,19 +39,21 @@ const STEPS = [
   {
     number: "01",
     title: "Tell us what happened",
-    body: "Share a few details about the scam and how much you lost. It takes a couple of minutes.",
+    body: "Share the key details of the incident, including how you were contacted, what platform or person was involved, and what happened to your money.",
   },
   {
     number: "02",
     title: "We review your case",
-    body: "Our team looks at what evidence exists and whether there's a realistic path to recovery.",
+    body: "We assess the information and evidence available to understand the circumstances of your case and whether there may be a realistic path toward recovery.",
   },
   {
     number: "03",
-    title: "We take action",
-    body: "If we take your case on, we start building it immediately, no obligation until then.",
+    title: "We explain your options",
+    body: "If your case is suitable for further review, we explain the next steps and what may be required to move forward.",
   },
 ];
+
+const CURRENCIES = ["USD", "GBP", "EUR", "CAD", "AUD", "Other"];
 
 function FieldLabel({ children, htmlFor }: { children: string; htmlFor: string }) {
   return (
@@ -88,15 +90,24 @@ export default async function StartYourClaimPage({
         <div className="mt-8 grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <Reveal>
             <span className="inline-block rounded-full bg-mist-100 px-3 py-1 text-xs font-bold tracking-wide text-brand-900 uppercase">
-              Free eligibility check
+              Free case assessment
             </span>
             <h1 className="font-display mt-4 text-[34px] leading-[1.15] font-normal tracking-tight text-brand-900 sm:text-[44px]">
-              Let&apos;s see if you have a case
+              Let&apos;s assess what happened
             </h1>
             <p className="mt-4 max-w-md text-[15px] leading-relaxed text-ink-500">
-              Tell us what happened and we&apos;ll let you know honestly
-              whether there&apos;s a realistic path to recovering what
-              you lost. There&apos;s no cost and no obligation to check.
+              If you&apos;ve lost money to an online scam, the first step
+              is understanding exactly what happened and what evidence is
+              available.
+            </p>
+            <p className="mt-3 max-w-md text-[15px] leading-relaxed text-ink-500">
+              Tell us about your situation. Our team will review the
+              information you provide and assess whether there may be a
+              realistic path toward recovery.
+            </p>
+            <p className="mt-3 max-w-md text-[15px] leading-relaxed text-ink-500">
+              No upfront cost. No obligation. Every case is different, and
+              recovery is not guaranteed.
             </p>
           </Reveal>
 
@@ -138,12 +149,8 @@ export default async function StartYourClaimPage({
             className="rounded-[28px] bg-white p-6 shadow-[0_8px_30px_rgba(11,11,13,0.08)] sm:p-10"
           >
             <h2 className="font-display text-xl font-medium text-brand-900">
-              Your details
+              Your Case Details
             </h2>
-            <p className="mt-1 text-sm text-ink-500">
-              It takes about two minutes, and we&apos;ll get back to you
-              within one business day.
-            </p>
 
             {error && (
               <p className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">
@@ -160,7 +167,7 @@ export default async function StartYourClaimPage({
                   name="fullName"
                   type="text"
                   autoComplete="name"
-                  placeholder="Jane Doe"
+                  placeholder="Enter your full name"
                   required
                   className={inputClasses}
                 />
@@ -172,7 +179,7 @@ export default async function StartYourClaimPage({
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="jane@example.com"
+                  placeholder="Enter your email address"
                   required
                   className={inputClasses}
                 />
@@ -184,14 +191,14 @@ export default async function StartYourClaimPage({
                   name="phone"
                   type="tel"
                   autoComplete="tel"
-                  placeholder="+1 (000) 000-0000"
+                  placeholder="Include your country code"
                   className={inputClasses}
                 />
               </div>
               <div>
-                <FieldLabel htmlFor="scamType">Type of scam</FieldLabel>
+                <FieldLabel htmlFor="scamType">Type of fraud</FieldLabel>
                 <select id="scamType" name="scamType" className={inputClasses}>
-                  <option value="">Select an option</option>
+                  <option value="">Select the type of scam involved</option>
                   {SCAM_TYPES.map((scam) => (
                     <option key={scam.slug} value={scam.slug}>
                       {scam.title}
@@ -206,9 +213,20 @@ export default async function StartYourClaimPage({
                   id="amountLost"
                   name="amountLost"
                   type="text"
-                  placeholder="$0"
+                  placeholder="Enter the amount"
                   className={inputClasses}
                 />
+              </div>
+              <div>
+                <FieldLabel htmlFor="currency">Currency</FieldLabel>
+                <select id="currency" name="currency" className={inputClasses}>
+                  <option value="">Select currency</option>
+                  {CURRENCIES.map((currency) => (
+                    <option key={currency} value={currency}>
+                      {currency}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div>
                 <FieldLabel htmlFor="whenLost">When did this happen?</FieldLabel>
@@ -216,7 +234,7 @@ export default async function StartYourClaimPage({
                   id="whenLost"
                   name="whenLost"
                   type="text"
-                  placeholder="e.g. March 2026"
+                  placeholder="Month and year"
                   className={inputClasses}
                 />
               </div>
@@ -226,19 +244,39 @@ export default async function StartYourClaimPage({
                   id="details"
                   name="details"
                   rows={5}
-                  placeholder="Tell us how you were contacted, what platform was involved, and any other details that might help."
+                  placeholder="Tell us how you were contacted, what platform or person was involved, how the payment was made, and what happened afterward."
                   required
                   className={`${inputClasses} resize-none`}
                 />
+                <p className="mt-2 text-xs text-ink-500">
+                  Please do not share passwords, banking login details,
+                  recovery phrases, or other sensitive security
+                  information.
+                </p>
               </div>
             </div>
 
             <button
               type="submit"
-              className="group mt-8 inline-flex items-center justify-center gap-3 rounded-xl bg-accent-500 py-3 pr-3 pl-6 text-[15px] font-semibold tracking-tight whitespace-nowrap text-brand-950 transition-colors duration-150 hover:bg-accent-400"
+              className="group mt-8 inline-flex items-center justify-center gap-3 rounded-xl bg-accent-500 py-2 pr-2 pl-6 text-[15px] font-semibold tracking-tight whitespace-nowrap text-brand-950 transition-colors duration-150 hover:bg-accent-400"
             >
-              Submit your details
+              Submit Your Case for Assessment
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-950/10 transition-transform duration-150 group-hover:translate-x-0.5">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path
+                    d="M2.5 7h9M7.5 3l4 4-4 4"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
             </button>
+            <p className="mt-3 text-xs text-ink-500">
+              Your information will be reviewed as part of the case
+              assessment. Submission does not guarantee recovery.
+            </p>
           </form>
           </Reveal>
 
